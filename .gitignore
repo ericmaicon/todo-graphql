@@ -6,3 +6,9 @@ node_modules/
 database/
 .env
 coverage/
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
