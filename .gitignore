@@ -3,3 +3,6 @@
 .vscode/
 dist/
 node_modules/
+database/
+.env
+coverage/
