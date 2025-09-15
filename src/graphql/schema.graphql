@@ -1,0 +1,46 @@
+enum TaskStatus {
+  todo
+  inProgress
+  done
+  archived
+}
+
+type Task {
+  id: ID!
+  title: String!
+  description: String
+  status: TaskStatus!
+}
+
+type TasksDTO {
+  items: [Task!]!
+}
+
+type SignInDTO {
+  accessToken: String!
+}
+
+input SignInDAO {
+  username: String!
+  password: String!
+}
+
+input CreateTaskDAO {
+  title: String!
+  description: String
+  status: TaskStatus!
+}
+
+input UpdateTaskDAO {
+  status: TaskStatus!
+}
+
+type Query {
+  tasks: TasksDTO
+}
+
+type Mutation {
+  signIn(input: SignInDAO!): SignInDTO!
+  createTask(input: CreateTaskDAO!): Boolean!
+  updateTask(id: ID!, input: UpdateTaskDAO!): Boolean!
+}

@@ -1,0 +1,26 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "compile": "tsc",
+    "start": "node ./dist/index.js"
+  },
+  "author": "Eric Maicon",
+  "license": "ISC",
+  "description": "TODO graphQL server",
+  "dependencies": {
+    "@apollo/server": "^5.0.0",
+    "@as-integrations/express5": "^1.1.2",
+    "@graphql-tools/schema": "^10.0.25",
+    "express": "^5.1.0",
+    "graphql": "^16.11.0",
+    "tsconfig-paths": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.5.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
