@@ -4,7 +4,10 @@
   "scripts": {
     "dev": "ts-node src/index.ts",
     "compile": "tsc",
-    "start": "node ./dist/index.js"
+    "start": "node ./dist/index.js",
+    "lint": "tsc -b && eslint ./src --ext .ts",
+    "prepare": "husky",
+    "commit": "cz"
   },
   "author": "Eric Maicon",
   "license": "ISC",
@@ -18,9 +21,38 @@
     "tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.35.0",
     "@types/express": "^5.0.3",
     "@types/node": "^24.5.0",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^9.35.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "globals": "^16.4.0",
+    "husky": "^9.1.7",
+    "jiti": "^2.5.1",
+    "lint-staged": "^16.1.6",
+    "prettier": "3.6.2",
+    "semantic-release": "^24.2.8",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.44.0"
+  },
+  "lint-staged": {
+    "src/**/*.(ts|js)": [
+      "npm run lint"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
