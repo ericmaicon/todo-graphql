@@ -1,0 +1,30 @@
+name: Release
+on:
+  workflow_run:
+    workflows: ['Test']
+    types:
+      - completed
+    branches:
+      - main
+
+jobs:
+  release:
+    name: release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v5
+        with:
+          cache: npm
+          node-version: lts/*
+      - run: npm ci
+      - run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
