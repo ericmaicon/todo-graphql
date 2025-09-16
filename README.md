@@ -1,5 +1,9 @@
 # TODO GraphQL server
 
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
 ## Prerequisites
 
 - Node.js
@@ -113,3 +117,9 @@ curl --location 'http://localhost:4000/graphql' \
 --header 'Content-Type: application/json' \
 --data '{"query":"query {\n  tasks {\n    totalCount\n    items {\n      id\n      title\n      description\n      status\n    }\n  }\n}","variables":{}}'
 ```
+
+## TODO
+
+1. Host
+2. CI to run integration tests
+3. Improve local development with DB Seed
