@@ -9,6 +9,7 @@ export default async function updateTask(id: number, input: TaskUpdate): Promise
     throw new AppError('Task not found.');
   }
 
-  await taskData.updateOne(id, input);
-  return task;
+  // TODO: validate task owner
+
+  return taskData.updateOne(id, input);
 }

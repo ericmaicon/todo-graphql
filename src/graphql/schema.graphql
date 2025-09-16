@@ -36,11 +36,11 @@ input UpdateTaskDAO {
 }
 
 type Query {
-  tasks: TasksDTO
+  tasks: TasksDTO @isAuth
 }
 
 type Mutation {
   signIn(input: SignInDAO!): SignInDTO!
-  createTask(input: CreateTaskDAO!): Task!
-  updateTask(id: ID!, input: UpdateTaskDAO!): Task!
+  createTask(input: CreateTaskDAO!): Task! @isAuth
+  updateTask(id: ID!, input: UpdateTaskDAO!): Task! @isAuth
 }

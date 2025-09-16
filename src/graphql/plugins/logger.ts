@@ -1,11 +1,7 @@
 import crypto from 'crypto';
-import pino from 'pino';
 
 import AppError from '@/error/AppError';
-
-const logger = pino({
-  level: 'info',
-});
+import logger from '@/logger';
 
 export const loggerPlugin = {
   async requestDidStart() {

@@ -1,4 +1,5 @@
 import { GraphQLResolveInfo } from 'graphql';
+import { TODOContext } from '../graphql/context';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -212,7 +213,7 @@ export type ResolversParentTypes = {
 };
 
 export type MutationResolvers<
-  ContextType = any,
+  ContextType = TODOContext,
   ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation'],
 > = {
   createTask?: Resolver<
@@ -236,21 +237,21 @@ export type MutationResolvers<
 };
 
 export type QueryResolvers<
-  ContextType = any,
+  ContextType = TODOContext,
   ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query'],
 > = {
   tasks?: Resolver<Maybe<ResolversTypes['TasksDTO']>, ParentType, ContextType>;
 };
 
 export type SignInDtoResolvers<
-  ContextType = any,
+  ContextType = TODOContext,
   ParentType extends ResolversParentTypes['SignInDTO'] = ResolversParentTypes['SignInDTO'],
 > = {
   accessToken?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 };
 
 export type TaskResolvers<
-  ContextType = any,
+  ContextType = TODOContext,
   ParentType extends ResolversParentTypes['Task'] = ResolversParentTypes['Task'],
 > = {
   description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -260,13 +261,13 @@ export type TaskResolvers<
 };
 
 export type TasksDtoResolvers<
-  ContextType = any,
+  ContextType = TODOContext,
   ParentType extends ResolversParentTypes['TasksDTO'] = ResolversParentTypes['TasksDTO'],
 > = {
   items?: Resolver<Array<ResolversTypes['Task']>, ParentType, ContextType>;
 };
 
-export type Resolvers<ContextType = any> = {
+export type Resolvers<ContextType = TODOContext> = {
   Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
   SignInDTO?: SignInDtoResolvers<ContextType>;

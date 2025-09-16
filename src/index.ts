@@ -9,28 +9,37 @@ import { expressMiddleware } from '@as-integrations/express5';
 import typeDefs from './graphql/typeDefs';
 import resolvers from './graphql/resolvers';
 import { logger } from './graphql/plugins';
+import { buildContext, TODOContext } from './graphql/context';
+import isAuthDirective from './graphql/directives/isAuth';
 
 const app = express();
-
 app.get('/health', (_req: Request, res: Response) => {
   res.status(200).json({ status: 'ok' });
 });
 
 const httpServer = http.createServer(app);
 
-const schema = makeExecutableSchema({
-  typeDefs: [typeDefs],
+const { isAuthDirectiveTransformer, isAuthDirectiveTypeDefs } = isAuthDirective('isAuth');
+let schema = makeExecutableSchema({
+  typeDefs: [typeDefs, isAuthDirectiveTypeDefs],
   resolvers,
 });
+schema = isAuthDirectiveTransformer(schema);
 
 async function start(): Promise<void> {
-  const server = new ApolloServer({
+  const server = new ApolloServer<TODOContext>({
     schema,
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer }), logger],
   });
   await server.start();
 
-  app.use('/graphql', express.json(), expressMiddleware(server));
+  app.use(
+    '/graphql',
+    express.json(),
+    expressMiddleware(server, {
+      context: buildContext,
+    }),
+  );
 
   await new Promise<void>((resolve) => httpServer.listen({ port: 4000 }, resolve));
   console.log('🚀  Server ready at: http://localhost:4000/graphql');
