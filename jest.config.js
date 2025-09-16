@@ -15,7 +15,6 @@ module.exports = {
       statements: 80,
     },
   },
-  coveragePathIgnorePatterns: ['/node_modules/', '/dist/', 'src/data/', 'src/db'],
   testMatch: ['**/src/**/*.spec.ts'],
   moduleFileExtensions: ['ts', 'js'],
   clearMocks: true,
