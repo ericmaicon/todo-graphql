@@ -3,6 +3,11 @@ import { MutationCreateTaskArgs, MutationUpdateTaskArgs } from '../generated-typ
 import { TODOContext } from '../context';
 
 export default {
+  Query: {
+    tasks: async (_: undefined, __: undefined, context: TODOContext) => {
+      return taskDomain.tasks(context.userId!);
+    },
+  },
   Mutation: {
     createTask: async (_: undefined, { input }: MutationCreateTaskArgs, context: TODOContext) => {
       return taskDomain.createTask(context.userId!, input);

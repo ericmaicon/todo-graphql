@@ -80,6 +80,7 @@ export enum TaskStatus {
 export type TasksDto = {
   __typename?: 'TasksDTO';
   items: Array<Task>;
+  totalCount: Scalars['Int']['output'];
 };
 
 export type UpdateTaskDao = {
@@ -186,6 +187,7 @@ export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
   CreateTaskDAO: CreateTaskDao;
   ID: ResolverTypeWrapper<Scalars['ID']['output']>;
+  Int: ResolverTypeWrapper<Scalars['Int']['output']>;
   Mutation: ResolverTypeWrapper<Record<PropertyKey, never>>;
   Query: ResolverTypeWrapper<Record<PropertyKey, never>>;
   SignInDAO: SignInDao;
@@ -202,6 +204,7 @@ export type ResolversParentTypes = {
   Boolean: Scalars['Boolean']['output'];
   CreateTaskDAO: CreateTaskDao;
   ID: Scalars['ID']['output'];
+  Int: Scalars['Int']['output'];
   Mutation: Record<PropertyKey, never>;
   Query: Record<PropertyKey, never>;
   SignInDAO: SignInDao;
@@ -265,6 +268,7 @@ export type TasksDtoResolvers<
   ParentType extends ResolversParentTypes['TasksDTO'] = ResolversParentTypes['TasksDTO'],
 > = {
   items?: Resolver<Array<ResolversTypes['Task']>, ParentType, ContextType>;
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = TODOContext> = {
