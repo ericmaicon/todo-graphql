@@ -28,9 +28,9 @@ export type CreateTaskDao = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  createTask: Scalars['Boolean']['output'];
+  createTask: Task;
   signIn: SignInDto;
-  updateTask: Scalars['Boolean']['output'];
+  updateTask: Task;
 };
 
 export type MutationCreateTaskArgs = {
@@ -216,7 +216,7 @@ export type MutationResolvers<
   ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation'],
 > = {
   createTask?: Resolver<
-    ResolversTypes['Boolean'],
+    ResolversTypes['Task'],
     ParentType,
     ContextType,
     RequireFields<MutationCreateTaskArgs, 'input'>
@@ -228,7 +228,7 @@ export type MutationResolvers<
     RequireFields<MutationSignInArgs, 'input'>
   >;
   updateTask?: Resolver<
-    ResolversTypes['Boolean'],
+    ResolversTypes['Task'],
     ParentType,
     ContextType,
     RequireFields<MutationUpdateTaskArgs, 'id' | 'input'>

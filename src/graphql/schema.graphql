@@ -41,6 +41,6 @@ type Query {
 
 type Mutation {
   signIn(input: SignInDAO!): SignInDTO!
-  createTask(input: CreateTaskDAO!): Boolean!
-  updateTask(id: ID!, input: UpdateTaskDAO!): Boolean!
+  createTask(input: CreateTaskDAO!): Task!
+  updateTask(id: ID!, input: UpdateTaskDAO!): Task!
 }
